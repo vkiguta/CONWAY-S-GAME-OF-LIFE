@@ -1,0 +1,82 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Conway's Game of Life</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Felipa&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <h1 class="title">Conway's Game of Life</h1>
+      <div class="wrapper">
+        <aside class="rules" id="rules">
+          <div class="rules-header">
+            <h2>Rules of the Game</h2>
+            <button id="toggleRules">✖</button>
+          </div>
+          <ul>
+            <li>Each cell with one or no neighbors dies, as if by solitude.</li>
+            <li>
+              Each cell with four or more neighbors dies, as if by
+              overpopulation.
+            </li>
+            <li>Each cell with two or three neighbors survives.</li>
+            <li>Each cell with three neighbors comes back to life.</li>
+          </ul>
+        </aside>
+
+        <div class="panel">
+          <canvas id="canvas"></canvas>
+          
+          <div class="toolbar">
+            <div class="buttons-container">
+              <button id="startBtn">Start</button>
+              <button id="stopBtn" disabled>Stop</button>
+              <button id="stepBtn">Step</button>
+              <button id="randomBtn">Randomize</button>
+              <button id="clearBtn">Clear</button>
+            </div>
+
+            <div class="slider-container">
+              <label for="speed">Speed (ms per gen)</label>
+              <input
+                id="speed"
+                type="range"
+                min="10"
+                max="200"
+                step="10"
+                value="50"
+              />
+              <span id="speedVal">50</span>
+            </div>
+          </div>
+
+          <!-- New container for stats (keeps the id values intact for JS) -->
+          <div class="stats-container">
+            <div class="stat">
+              <span>Generation:</span> <strong id="gen">0</strong>
+            </div>
+            <div class="stat">
+              <span>Alive:</span> <strong id="alive">0</strong>
+            </div>
+            <div class="stat">
+              <span>Cell size:</span> <strong id="cellsize">10</strong> px
+              (click to draw)
+            </div>
+          </div>
+          <span id="stableStatus"></span>
+
+        </div>
+
+        <button id="showRules" class="floating-btn">?</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

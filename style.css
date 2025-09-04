@@ -1,0 +1,312 @@
+:root {
+  --bg: #0f0f0f;
+  --panel: #151515;
+  --ink: #e8e8e8;
+  --accent: #00ffa0;
+  --dead: #1a1a1a;
+  --alive: #00ffa0;
+  --grid: rgba(255, 255, 255, 0.03);
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--ink);
+  background: radial-gradient(1000px 700px at 20% 10%, #121212, #0a0a0a);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.title {
+    font-family: "Felipa", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.wrap {
+  width: min(1200px, 96vw);
+  padding: 20px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* RULES PANEL */
+.rules {
+ 
+  flex: 0 0 320px;         
+  min-width: 320px;
+  max-width: 360px;
+  background: var(--panel);
+  padding: 1.5rem;
+  border-radius: 12px;
+  color: #ddd;
+  font-size: 20px;
+  line-height: 1.6;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+.rules-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rules-header h2 {
+  margin: 0;
+  font-family: "Felipa", serif;
+  font-size: 30px;
+  color: #00ffa0;
+}
+
+.rules-header button {
+  background: transparent;
+  border: none;
+  color: #00ffa0;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* FLOATING BUTTON (hidden by default) */
+.floating-btn {
+  display: none;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: #0ff;
+  color: #111;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 255, 200, 0.6);
+}
+
+
+
+
+h1 {
+  font-size: 44px;
+  margin: 0 0 12px 0;
+  letter-spacing: 0.3px;
+    text-align: center;
+  margin-bottom: 10px;
+}
+
+
+.panel {
+  flex: 1 1 0;
+  min-width: 0;                   /* IMPORTANT in flex rows */
+  background: var(--panel);
+  border: 1px solid #232323;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+  margin-top: 20px;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+button,
+.slider {
+  background: #1f1f1f;
+  color: var(--ink);
+  border: 1px solid #2a2a2a;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+button:hover {
+  background: #262626;
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+label {
+  font-size: 12px;
+  opacity: 0.85;
+}
+input[type="range"] {
+  width: 180px;
+  vertical-align: middle;
+}
+
+.stats {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+canvas {
+  width: min(900px, 100%);  /* shrink to fit when needed */
+  height: auto;             /* keep aspect ratio */
+  aspect-ratio: 3 / 2;      /* same as your 900x600 */
+  display: block;
+  border-radius: 12px;
+  outline: 1px solid #2a2a2a;
+  background: var(--bg);
+  margin-top: 10px;
+}
+
+
+
+/* MOBILE BEHAVIOR */
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;   /* stack vertically */
+    align-items: stretch;     /* make both children full width */
+  }
+
+  .rules {
+    position: relative;       /* no fixed sliding panel */
+    width: 100%;              /* take full width */
+    max-width: none;          /* remove desktop max */
+    min-width: auto;          /* let it shrink */
+    transform: none;          /* reset hidden panel behavior */
+    margin-bottom: 1rem;      /* space below rules */
+  }
+
+  .panel {
+    width: 100%;              /* game takes full width */
+    max-width: none;
+  }
+
+  .floating-btn {
+    display: none;            /* not needed if rules are stacked */
+  }
+}
+
+/* ---------- Desktop layout (keeps current look) ---------- */
+.toolbar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+  margin-top: 20px;
+}
+
+/* left side: buttons */
+.buttons-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* make buttons visually consistent */
+.buttons-container button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #1f1f1f;
+  color: var(--ink);
+  border: 1px solid #2a2a2a;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* right side: slider + label */
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+.slider-container label { font-size: 12px; opacity: .85; }
+.slider-container input[type="range"] { width: 180px; }
+
+/* stats container desktop: inline items */
+.stats-container {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+  opacity: 0.9;
+  margin-top: 10px;
+  align-items: center;
+}
+.stats-container .stat { display: flex; gap: 6px; align-items: baseline; }
+
+/* ---------- Mobile layout (stack controls vertically) ---------- */
+@media (max-width: 600px) {
+  /* make toolbar a vertical stack */
+  .toolbar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  /* Buttons stacked vertically and full width for easy tapping */
+  .buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .buttons-container button {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  /* Slider centered and full width */
+  .slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+  }
+  .slider-container input[type="range"] { width: 90%; }
+
+  /* Stats become a vertical block so they fit */
+  .stats-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  /* ensure the panel takes full width and canvas fits inside */
+  .panel {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  canvas {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/2;
+  }
+}
