@@ -310,20 +310,29 @@ speedInput.addEventListener("input", () => {
   }
 });
 
-// rules toggle
-const rules = document.getElementById("rules");
-const toggleRules = document.getElementById("toggleRules");
-const showRules = document.getElementById("showRules");
+// // rules toggle
+// const rules = document.getElementById("rules");
+// const toggleRules = document.getElementById("toggleRules");
+// const showRules = document.getElementById("showRules");
 
-toggleRules.addEventListener("click", () => {
-  rules.classList.remove("show");
-});
+// toggleRules.addEventListener("click", () => {
+//   rules.classList.remove("show");
+// });
 
-showRules.addEventListener("click", () => {
-  rules.classList.add("show");
-});
+// showRules.addEventListener("click", () => {
+//   rules.classList.add("show");
+// });
 
 // ====== Boot ======
 updateHeartSprite();
 randomizeGrid(0.33);
 render();
+
+// preloader
+$(window).on("load", function() {
+  $(".loader").delay(2000).fadeOut("slow");
+  $("#overlayer").delay(2000).fadeOut("slow");
+});
+
+const video = document.getElementById("bg-video");
+  video.playbackRate = 1.5; // 1.5x speed (50% faster)

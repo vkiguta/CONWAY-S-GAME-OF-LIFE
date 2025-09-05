@@ -12,39 +12,55 @@
     />
   </head>
   <body>
+    
+    <!-- video BG -->
+     <video autoplay muted loop playsinline id="bg-video">
+  <source src="/assets/mixkit-flying-through-dark-matter-in-space-30563-hd-ready.mp4" type="video/mp4" />
+</video>
+<div id="video-overlay"></div>
+
+<!-- preloader -->
+ <div id="overlayer"></div>
+<span class="loader">
+  <span class="loader-inner"></span>
+</span>
+
     <div class="wrap">
-      <h1 class="title">Conway's Game of Life</h1>
+      <h1 class="title">O Jogo da Vida de Conway</h1>
       <div class="wrapper">
         <aside class="rules" id="rules">
           <div class="rules-header">
-            <h2>Rules of the Game</h2>
-            <button id="toggleRules">✖</button>
+            <h2>regras do jogo</h2>
+            <!-- <button id="toggleRules">✖</button> -->
           </div>
           <ul>
-            <li>Each cell with one or no neighbors dies, as if by solitude.</li>
             <li>
-              Each cell with four or more neighbors dies, as if by
-              overpopulation.
+              Toda aquela com apenas um ou menos vizinhos morre, como se
+              estivesse em solidão.
             </li>
-            <li>Each cell with two or three neighbors survives.</li>
+            <li>
+              Cada célula com quatro ou mais vizinhos morre, como se por
+              superpopulação
+            </li>
+            <li>Cada célula com dois ou três vizinhos sobrevive.</li>
             <li>Each cell with three neighbors comes back to life.</li>
           </ul>
         </aside>
 
         <div class="panel">
           <canvas id="canvas"></canvas>
-          
+
           <div class="toolbar">
             <div class="buttons-container">
-              <button id="startBtn">Start</button>
-              <button id="stopBtn" disabled>Stop</button>
-              <button id="stepBtn">Step</button>
-              <button id="randomBtn">Randomize</button>
-              <button id="clearBtn">Clear</button>
+              <button id="startBtn">começar</button>
+              <button id="stopBtn" disabled>parar</button>
+              <button id="stepBtn">próxima</button>
+              <button id="randomBtn">randomizar</button>
+              <button id="clearBtn">apagar</button>
             </div>
 
             <div class="slider-container">
-              <label for="speed">Speed (ms per gen)</label>
+              <label for="speed">velocidade (ms por geração)</label>
               <input
                 id="speed"
                 type="range"
@@ -60,23 +76,22 @@
           <!-- New container for stats (keeps the id values intact for JS) -->
           <div class="stats-container">
             <div class="stat">
-              <span>Generation:</span> <strong id="gen">0</strong>
+              <span>geração:</span> <strong id="gen">0</strong>
             </div>
             <div class="stat">
-              <span>Alive:</span> <strong id="alive">0</strong>
+              <span>Número de células:</span> <strong id="alive">0</strong>
             </div>
             <div class="stat">
-              <span>Cell size:</span> <strong id="cellsize">10</strong> px
-              (click to draw)
+              <span>tamanho da célula:</span> <strong id="cellsize">10</strong> px
             </div>
           </div>
           <span id="stableStatus"></span>
-
         </div>
 
         <button id="showRules" class="floating-btn">?</button>
       </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
