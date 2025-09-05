@@ -7,12 +7,11 @@
   --alive: #00ffa0;
   --grid: rgba(255, 255, 255, 0.03);
 }
-* {
-  box-sizing: border-box;
-}
+
 body,html {
   margin: 0;
   padding: 0;
+
   height: 100%;
   width: 100%;
   position: relative;
@@ -22,7 +21,13 @@ body,html {
   color: var(--ink);
   min-height: 100vh;
   display: grid;
+  box-sizing: border-box;
   place-items: center;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -62,10 +67,19 @@ body,html {
 text-shadow: 0 0 15px rgba(255,255,255,.5), 0 0 10px rgba(255,255,255,.5);
 }
 
+.copy{
+  text-align: center;
+  font-size: 35px;
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-family: 'Courier New', Courier, monospace;
+}
 
 .wrap {
   width: min(1240px, 96vw);
   padding: 0px;
+  flex: 1;
 }
 
 .wrapper {
@@ -87,13 +101,14 @@ text-shadow: 0 0 15px rgba(255,255,255,.5), 0 0 10px rgba(255,255,255,.5);
   min-width: 320px;
   max-width: 360px;
   background: var(--panel);
-  padding: 1.5rem;
+  padding: 13px;
   border-radius: 12px;
   color: #ddd;
-  font-size: 20px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 21px;
+  font-family: 'Courier New', Courier, monospace;
   line-height: 1.6;
   box-sizing: border-box;
+  border: 1px solid #232323;
   transition: transform 0.3s ease;
 }
 
@@ -106,7 +121,7 @@ text-shadow: 0 0 15px rgba(255,255,255,.5), 0 0 10px rgba(255,255,255,.5);
 .rules-header h2 {
   margin: 0;
   font-family: "Felipa", serif;
-  font-size: 30px;
+  font-size: 55px;
   color: #00ffa0;
   
 text-shadow: 0 0 15px rgba(0, 255, 64, 0.5), 0 0 10px rgba(255,255,255,.5);
@@ -347,6 +362,43 @@ canvas {
   }
 }
 
+/* footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 15px 30px;
+  background-color: #151515;
+  color: #fff;
+  font-size: 14px;
+  min-width: 1140px; 
+  border-radius: 12px;
+  border: 1px solid #232323;
+  margin-bottom: 20px;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+   transition: color 0.3s ease;
+}
+
+.footer-left a:hover {
+  
+  color: #00ffa0;
+  
+}
+
+.footer-right a {
+  margin-left: 15px;
+  font-size: 18px; /* Icon size */
+   transition: color 0.3s ease;
+}
+
+.footer-right a:hover {
+  
+  color: #00ffa0; /* Example hover color, can customize per icon */
+}
 
 
 /* preloader */
@@ -363,7 +415,7 @@ canvas {
   height: 30px;
   position: absolute;
   z-index:3;
-  border: 4px solid #00ffa0;;
+  border: 4px solid #00ffa0;
   top: 50%;
   animation: loader 2s infinite ease;
 }

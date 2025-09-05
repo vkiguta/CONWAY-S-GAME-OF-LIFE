@@ -10,25 +10,57 @@
       href="https://fonts.googleapis.com/css2?family=Felipa&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
   </head>
   <body>
-    
     <!-- video BG -->
-     <video autoplay muted loop playsinline id="bg-video">
-  <source src="/assets/mixkit-flying-through-dark-matter-in-space-30563-hd-ready.mp4" type="video/mp4" />
-</video>
-<div id="video-overlay"></div>
+    <video autoplay muted loop playsinline id="bg-video">
+      <source
+        src="/assets/mixkit-flying-through-dark-matter-in-space-30563-hd-ready.mp4"
+        type="video/mp4"
+      />
+    </video>
+    <div id="video-overlay"></div>
 
-<!-- preloader -->
- <div id="overlayer"></div>
-<span class="loader">
-  <span class="loader-inner"></span>
-</span>
+    <!-- preloader -->
+    <div id="overlayer"></div>
+    <span class="loader">
+      <span class="loader-inner"></span>
+    </span>
 
     <div class="wrap">
-      <h1 class="title">O Jogo da Vida de Conway</h1>
+      <h1 class="title" data-aos="fade-up">O Jogo da Vida de Conway</h1>
+      <p class="copy" data-aos="zoom-in">
+        No Jogo da Vida do John Conway, uns quadradinhos seguem umas regras bem
+        simples—e de repente mundos aparecem. Formas se movem, se encontram,
+        somem, e sobrevivem. Olhando isso, sinto algo impossível: a coisa mais
+        perto de me sentir um deus. <br> Tipo os Thronglets do Black Mirror, esses
+        padrões vivem, evoluem e me surpreendem, só com as regras mais simples.
+        É matemática, sim—mas também é arte, caos e criação rolando na tela. <br>
+       <strong>Aperta start e vê a vida nascer do nada.</strong> 
+      </p>
       <div class="wrapper">
-        <aside class="rules" id="rules">
+        <aside class="rules" id="rules" >
           <div class="rules-header">
             <h2>regras do jogo</h2>
             <!-- <button id="toggleRules">✖</button> -->
@@ -43,7 +75,7 @@
               superpopulação
             </li>
             <li>Cada célula com dois ou três vizinhos sobrevive.</li>
-            <li>Each cell with three neighbors comes back to life.</li>
+            <li>Cada célula com três vizinhos ganha vida.</li>
           </ul>
         </aside>
 
@@ -54,7 +86,7 @@
             <div class="buttons-container">
               <button id="startBtn">começar</button>
               <button id="stopBtn" disabled>parar</button>
-              <button id="stepBtn">próxima</button>
+              <button id="stepBtn">passo</button>
               <button id="randomBtn">randomizar</button>
               <button id="clearBtn">apagar</button>
             </div>
@@ -82,7 +114,8 @@
               <span>Número de células:</span> <strong id="alive">0</strong>
             </div>
             <div class="stat">
-              <span>tamanho da célula:</span> <strong id="cellsize">10</strong> px
+              <span>tamanho da célula:</span>
+              <strong id="cellsize">10</strong> px
             </div>
           </div>
           <span id="stableStatus"></span>
@@ -91,7 +124,29 @@
         <button id="showRules" class="floating-btn">?</button>
       </div>
     </div>
+
+    <!-- footer -->
+    <div class="footer" >
+       <div class="footer-left">
+    © 2025 Foi projetado e desenvolvido por 
+    <a href="https://mwanikikiguta.netlify.app" target="_blank">Mwaniki Kiguta</a>
+  </div>
+  <div class="footer-right">
+    <a href="https://www.instagram.com/burge.ndy/" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://twitter.com/yourusername" target="_blank">
+      <i class="fab fa-behance"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/mwaniki-kiguta-5a20171b4/" target="_blank">
+      <i class="fab fa-linkedin"></i>
+    </a>
+  </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
   </body>
 </html>
