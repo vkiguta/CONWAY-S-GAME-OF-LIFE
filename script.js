@@ -2,7 +2,7 @@
 const translations = {
   en: {
     title: "Conway's Game of Life",
-    copy: `In the game of life of John Conway, some squares follow some rules well 
+    copy: `In the game of life, a celular automata developed by John Conway in 1970, some squares follow some rules well 
 Simple - and suddenly worlds appear. Shapes move, meet, 
 Add, and survive. Looking at this, I feel something impossible: the most 
 Near feeling a god. <br> Like Black Mirror Thronglets, these 
@@ -14,13 +14,13 @@ It's math, yes - but it's also art, chaos and creation rolling on the screen. <b
       <li>Each cell with four or more neighbors dies, as if by overpopulation</li>
       <li>Each cell with two or three neighbors survives.</li>
       <li>Each cell with exactly three neighbors come to life.</li>`,
-    speed:`speed (ms/generation)`,
-    generation:`generation`,
-    cellNo:`number of cells`,
-    cellSize:`size of cells`,
-    copyright:`
+    speed: `speed (ms/generation)`,
+    generation: `generation`,
+    cellNo: `number of cells`,
+    cellSize: `size of cells`,
+    copyright: `
     © 2025 Designed and Developed by 
-    <a href="https://mwanikikiguta.netlify.app" target="_blank">Mwaniki Kiguta</a>`
+    <a href="https://mwanikikiguta.netlify.app" target="_blank">Mwaniki Kiguta</a>`,
   },
   pt: {
     title: "Jogo da Vida de Conway",
@@ -38,13 +38,13 @@ It's math, yes - but it's also art, chaos and creation rolling on the screen. <b
       <li>Cada célula com dois ou três vizinhos sobrevive.</li>
       <li>CCada célula com três vizinhos ganha vida.</li>
     `,
-    speed:`velocidade (ms por geração)`,
-    generation:`geração:`,
-    cellNo:`Número de células:`,
-    cellSize:`tamanho da célula:`,
-    copyright:`
+    speed: `velocidade (ms por geração)`,
+    generation: `geração:`,
+    cellNo: `Número de células:`,
+    cellSize: `tamanho da célula:`,
+    copyright: `
     © 2025 Foi projetado e desenvolvido por 
-    <a href="https://mwanikikiguta.netlify.app" target="_blank">Mwaniki Kiguta</a>`
+    <a href="https://mwanikikiguta.netlify.app" target="_blank">Mwaniki Kiguta</a>`,
   },
 };
 

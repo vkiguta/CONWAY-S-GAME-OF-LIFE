@@ -466,6 +466,10 @@ canvas {
 
 /* Responsive behavior */
 @media (max-width: 600px) {
+
+  .footer-row{
+    flex-direction: column;
+  }
   .footer {
     flex-direction: column;
     text-align: center;
@@ -480,6 +484,7 @@ canvas {
     margin-left: 30px;
     margin-right: 30px;
   }
+
 }
 
 
