@@ -48,34 +48,21 @@
       <span class="loader-inner"></span>
     </span>
 
+ 
+
     <div class="wrap">
-      <h1 class="title" data-aos="fade-up">O Jogo da Vida de Conway</h1>
-      <p class="copy" data-aos="zoom-in">
-        No Jogo da Vida do John Conway, uns quadradinhos seguem umas regras bem
-        simples—e de repente mundos aparecem. Formas se movem, se encontram,
-        somem, e sobrevivem. Olhando isso, sinto algo impossível: a coisa mais
-        perto de me sentir um deus. <br> Tipo os Thronglets do Black Mirror, esses
-        padrões vivem, evoluem e me surpreendem, só com as regras mais simples.
-        É matemática, sim—mas também é arte, caos e criação rolando na tela. <br>
-       <strong>Aperta start e vê a vida nascer do nada.</strong> 
+      <h1 class="title" data-i18n="title" data-aos="fade-up"></h1>
+      <p class="copy" data-i18n="copy" data-aos="zoom-in">
+        
       </p>
       <div class="wrapper">
         <aside class="rules" id="rules" >
           <div class="rules-header">
-            <h2>regras do jogo</h2>
+            <h2 data-i18n="rulesTitle"></h2>
             <!-- <button id="toggleRules">✖</button> -->
           </div>
-          <ul>
-            <li>
-              Toda aquela com apenas um ou menos vizinhos morre, como se
-              estivesse em solidão.
-            </li>
-            <li>
-              Cada célula com quatro ou mais vizinhos morre, como se por
-              superpopulação
-            </li>
-            <li>Cada célula com dois ou três vizinhos sobrevive.</li>
-            <li>Cada célula com três vizinhos ganha vida.</li>
+          <ul data-i18n="rules">
+            
           </ul>
         </aside>
 
@@ -84,15 +71,15 @@
 
           <div class="toolbar">
             <div class="buttons-container">
-              <button id="startBtn">começar</button>
-              <button id="stopBtn" disabled>parar</button>
-              <button id="stepBtn">passo</button>
-              <button id="randomBtn">randomizar</button>
-              <button id="clearBtn">apagar</button>
-            </div>
+  <button id="startBtn" title="Start ▶️"><i class="fas fa-play"></i></button>
+  <button id="stopBtn" title="Stop ⏸️" disabled><i class="fas fa-pause"></i></button>
+  <button id="stepBtn" title="Step ⏹️"><i class="fas fa-forward-step"></i></button>
+  <button id="randomBtn" title="Randomize 🎲"><i class="fas fa-dice"></i></button>
+  <button id="clearBtn" title="Clear 🗑️"><i class="fas fa-trash"></i></button>
+</div>
 
             <div class="slider-container">
-              <label for="speed">velocidade (ms por geração)</label>
+              <label for="speed" data-i18n="speed"></label>
               <input
                 id="speed"
                 type="range"
@@ -108,13 +95,13 @@
           <!-- New container for stats (keeps the id values intact for JS) -->
           <div class="stats-container">
             <div class="stat">
-              <span>geração:</span> <strong id="gen">0</strong>
+              <span data-i18n="generation"></span> <strong id="gen">0</strong>
+            </div>
+            <div class="stat" >
+              <span data-i18n="cellNo"></span> <strong id="alive">0</strong>
             </div>
             <div class="stat">
-              <span>Número de células:</span> <strong id="alive">0</strong>
-            </div>
-            <div class="stat">
-              <span>tamanho da célula:</span>
+              <span data-i18n="cellSize"></span>
               <strong id="cellsize">10</strong> px
             </div>
           </div>
@@ -125,24 +112,31 @@
       </div>
     </div>
 
-    <!-- footer -->
-    <div class="footer" >
-       <div class="footer-left">
-    © 2025 Foi projetado e desenvolvido por 
-    <a href="https://mwanikikiguta.netlify.app" target="_blank">Mwaniki Kiguta</a>
-  </div>
-  <div class="footer-right">
-    <a href="https://www.instagram.com/burge.ndy/" target="_blank">
-      <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://twitter.com/yourusername" target="_blank">
-      <i class="fab fa-behance"></i>
-    </a>
-    <a href="https://www.linkedin.com/in/mwaniki-kiguta-5a20171b4/" target="_blank">
-      <i class="fab fa-linkedin"></i>
-    </a>
-  </div>
+
+
+  <!-- footer with language toggle -->
+<div class="footer-row">
+  <button id="lang-toggle">🇧🇷</button>
+  
+  <div class="footer" >
+    <div class="footer-left" data-i18n="copyright">
+      © 2025 Foi projetado e desenvolvido por 
+      <a href="https://mwanikikiguta.netlify.app" target="_blank">Mwaniki Kiguta</a>
     </div>
+    <div class="footer-right">
+      <a href="https://www.instagram.com/burge.ndy/" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://twitter.com/yourusername" target="_blank">
+        <i class="fab fa-behance"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/mwaniki-kiguta-5a20171b4/" target="_blank">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>

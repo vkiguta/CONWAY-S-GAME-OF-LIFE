@@ -121,7 +121,8 @@ text-shadow: 0 0 15px rgba(255,255,255,.5), 0 0 10px rgba(255,255,255,.5);
 .rules-header h2 {
   margin: 0;
   font-family: "Felipa", serif;
-  font-size: 55px;
+  text-align: center;
+  font-size: 35px;
   color: #00ffa0;
   
 text-shadow: 0 0 15px rgba(0, 255, 64, 0.5), 0 0 10px rgba(255,255,255,.5);
@@ -321,15 +322,35 @@ canvas {
   /* Buttons stacked vertically and full width for easy tapping */
   .buttons-container {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
     gap: 8px;
   }
   .buttons-container button {
-    width: 100%;
-    text-align: center;
-    padding: 12px;
-    font-size: 16px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px; /* space between icon and optional text */
+  padding: 10px 12px;
+  font-size: 18px;
+  border-radius: 10px;
+  background: #1f1f1f;
+  color: var(--ink);
+  border: 1px solid #2a2a2a;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.buttons-container button:hover {
+  background: #262626;
+  transform: scale(1.05);
+}
+
+.buttons-container button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
   /* Slider centered and full width */
   .slider-container {
@@ -362,7 +383,35 @@ canvas {
   }
 }
 
+
+
 /* footer */
+
+.footer-row {
+  display: flex;
+  align-items: center;      /* vertical centering */
+  justify-content: center;  /* horizontal centering */
+  gap: 20px;                /* space between toggle button and footer */
+  flex-wrap: wrap;          /* wrap on small screens */
+  margin: 30px 0;
+}
+
+#lang-toggle {
+  background: #151515;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  border: 1px solid #232323;
+  color: #fff;
+  padding: 10px 15px;
+  font-size: 35px;
+  border-radius: 12px;
+  cursor: pointer;
+ 
+}
+
+#lang-toggle:hover {
+  background: #262626;
+}
+
 .footer {
   flex: 1 1 0;
   min-width: 0;                  /* match panel behavior */
@@ -371,12 +420,11 @@ canvas {
   border-radius: 16px;
   padding: 16px;
   box-shadow: 0 10px 30px rgba(0,0,0,.35);
-
+  gap: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-
   margin: 20px 0;                 /* same spacing as panels */
   font-size: 14px;
   color: #fff;

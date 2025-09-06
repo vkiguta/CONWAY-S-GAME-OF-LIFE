@@ -1,3 +1,79 @@
+// language stuff
+const translations = {
+  en: {
+    title: "Conway's Game of Life",
+    copy: `In the game of life of John Conway, some squares follow some rules well 
+Simple - and suddenly worlds appear. Shapes move, meet, 
+Add, and survive. Looking at this, I feel something impossible: the most 
+Near feeling a god. <br> Like Black Mirror Thronglets, these 
+Patterns live, evolve and surprise me, only with the simplest rules. 
+It's math, yes - but it's also art, chaos and creation rolling on the screen. <br> 
+<strong> Tight Start and sees life born out of nowhere. </strong>`,
+    rulesTitle: `Rules of the Game`,
+    rules: `<li>Each cell with only one or no neighbors dies, as if by loneliness.</li>
+      <li>Each cell with four or more neighbors dies, as if by overpopulation</li>
+      <li>Each cell with two or three neighbors survives.</li>
+      <li>Each cell with exactly three neighbors come to life.</li>`,
+    speed:`speed (ms/generation)`,
+    generation:`generation`,
+    cellNo:`number of cells`,
+    cellSize:`size of cells`,
+    copyright:`
+    © 2025 Designed and Developed by 
+    <a href="https://mwanikikiguta.netlify.app" target="_blank">Mwaniki Kiguta</a>`
+  },
+  pt: {
+    title: "Jogo da Vida de Conway",
+    copy: `No Jogo da Vida do John Conway, uns quadradinhos seguem umas regras bem
+        simples—e de repente mundos aparecem. Formas se movem, se encontram,
+        somem, e sobrevivem. Olhando isso, sinto algo impossível: a coisa mais
+        perto de me sentir um deus. <br> Tipo os Thronglets do Black Mirror, esses
+        padrões vivem, evoluem e me surpreendem, só com as regras mais simples.
+        É matemática, sim—mas também é arte, caos e criação rolando na tela. <br>
+       <strong>Aperta start e vê a vida nascer do nada.</strong>`,
+    rulesTitle: `Regras de Jogo`,
+    rules: `
+      <li>Toda aquela com apenas um ou menos vizinhos morre, como se estivesse em solidão.</li>
+      <li>Cada célula com quatro ou mais vizinhos morre, como se por superpopulação.</li>
+      <li>Cada célula com dois ou três vizinhos sobrevive.</li>
+      <li>CCada célula com três vizinhos ganha vida.</li>
+    `,
+    speed:`velocidade (ms por geração)`,
+    generation:`geração:`,
+    cellNo:`Número de células:`,
+    cellSize:`tamanho da célula:`,
+    copyright:`
+    © 2025 Foi projetado e desenvolvido por 
+    <a href="https://mwanikikiguta.netlify.app" target="_blank">Mwaniki Kiguta</a>`
+  },
+};
+
+let currentLang = "en"; // default language
+const langToggleBtn = document.getElementById("lang-toggle");
+
+// unified function
+function setLang(lang) {
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    if (translations[lang][key]) {
+      el.innerHTML = translations[lang][key];
+    }
+  });
+
+  // update toggle button icon
+  langToggleBtn.innerText = lang === "en" ? "🇧🇷" : "🇬🇧";
+
+  currentLang = lang;
+}
+
+// toggle on button click
+langToggleBtn.addEventListener("click", () => {
+  setLang(currentLang === "en" ? "pt" : "en");
+});
+
+// set default language on load
+setLang("en");
+
 // ====== Config ======
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -162,14 +238,14 @@ function drawHeart(ctx, x, y, size, color) {
 // ====== Optimization for hearts ======
 let heartSprite = null;
 let aliveColorCached = null;
-const FADE_DECAY = 0.9;   // tune this (0.9 = slower fade, 0.6 = faster fade)
+const FADE_DECAY = 0.9; // tune this (0.9 = slower fade, 0.6 = faster fade)
 const FADE_CUTOFF = 0.05; // below this we stop drawing a faded heart
 
 function createHeartSprite(color) {
-  const sprite = document.createElement('canvas');
+  const sprite = document.createElement("canvas");
   sprite.width = CELL;
   sprite.height = CELL;
-  const sctx = sprite.getContext('2d');
+  const sctx = sprite.getContext("2d");
   sctx.clearRect(0, 0, sprite.width, sprite.height);
 
   drawHeart(sctx, sprite.width / 2, sprite.height / 2, sprite.width / 2, color);
@@ -178,14 +254,18 @@ function createHeartSprite(color) {
 }
 
 function updateHeartSprite() {
-  aliveColorCached = getComputedStyle(document.documentElement)
-                       .getPropertyValue('--alive').trim() || '#00ff00';
+  aliveColorCached =
+    getComputedStyle(document.documentElement)
+      .getPropertyValue("--alive")
+      .trim() || "#00ff00";
   heartSprite = createHeartSprite(aliveColorCached);
 }
 
 function render() {
-  const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
-  ctx.fillStyle = bg || '#000';
+  const bg = getComputedStyle(document.documentElement)
+    .getPropertyValue("--bg")
+    .trim();
+  ctx.fillStyle = bg || "#000";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   let aliveCount = 0;
@@ -329,10 +409,10 @@ randomizeGrid(0.33);
 render();
 
 // preloader
-$(window).on("load", function() {
+$(window).on("load", function () {
   $(".loader").delay(2000).fadeOut("slow");
   $("#overlayer").delay(2000).fadeOut("slow");
 });
 
 const video = document.getElementById("bg-video");
-  video.playbackRate = 1.5; // 1.5x speed (50% faster)
+video.playbackRate = 1.5; // 1.5x speed (50% faster)
