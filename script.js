@@ -36,7 +36,7 @@ It's math, yes - but it's also art, chaos and creation rolling on the screen. <b
       <li>Toda aquela com apenas um ou menos vizinhos morre, como se estivesse em solidão.</li>
       <li>Cada célula com quatro ou mais vizinhos morre, como se por superpopulação.</li>
       <li>Cada célula com dois ou três vizinhos sobrevive.</li>
-      <li>CCada célula com três vizinhos ganha vida.</li>
+      <li>Cada célula com três vizinhos ganha vida.</li>
     `,
     speed: `velocidade (ms por geração)`,
     generation: `geração:`,
@@ -416,3 +416,106 @@ $(window).on("load", function () {
 
 const video = document.getElementById("bg-video");
 video.playbackRate = 1.5; // 1.5x speed (50% faster)
+
+
+
+// presets
+const presets = {
+  glider: [
+    [0,1],[1,2],[2,0],[2,1],[2,2]
+  ],
+  pulsar: [
+    [2,4],[2,5],[2,6],[2,10],[2,11],[2,12],
+    [7,4],[7,5],[7,6],[7,10],[7,11],[7,12],
+    [9,4],[9,5],[9,6],[9,10],[9,11],[9,12],
+    [14,4],[14,5],[14,6],[14,10],[14,11],[14,12],
+    [4,2],[5,2],[6,2],[10,2],[11,2],[12,2],
+    [4,7],[5,7],[6,7],[10,7],[11,7],[12,7],
+    [4,9],[5,9],[6,9],[10,9],[11,9],[12,9],
+    [4,14],[5,14],[6,14],[10,14],[11,14],[12,14],
+  ],
+  gosper: [
+    [5,1],[5,2],[6,1],[6,2],
+    [5,11],[6,11],[7,11],
+    [4,12],[8,12],
+    [3,13],[9,13],
+    [3,14],[9,14],
+    [6,15],
+    [4,16],[8,16],
+    [5,17],[6,17],[7,17],
+    [6,18],
+    [3,21],[4,21],[5,21],
+    [3,22],[4,22],[5,22],
+    [2,23],[6,23],
+    [1,25],[2,25],[6,25],[7,25],
+    [3,35],[4,35],[3,36],[4,36]
+  ],
+   Acorn: [
+    [0,0],[1,0],[1,2],[3,1],[4,0],[5,0],[6,0]
+  ],
+  Tumbler: [
+    [0,0],[1,0],[5,0],[6,0],
+    [0,1],[1,1],[5,1],[6,1],
+    [2,2],[4,2],
+    [2,3],[4,3],
+    [2,4],[3,4],[4,4],
+    [2,5],[3,5],[4,5]
+  ]
+};
+
+
+// ---- Presets loader (replace your existing handler) ----
+const presetsSelect = document.getElementById("presets");
+
+if (presetsSelect) {
+  presetsSelect.addEventListener("change", (e) => {
+    const choice = e.target.value;
+    if (!choice) return;
+
+    // stop simulation while we place the pattern
+    pause();
+
+    // clear grids & fades
+    clearGrid();              // sets grid and fadeGrid to zero, generation = 0, stable = false
+    fadeGrid = buildGrid(ROWS, COLS, 0);
+
+    const pattern = presets[choice];
+    if (!pattern) return;
+
+    // compute pattern bounding box so we can center it correctly
+    let minR = Infinity, minC = Infinity, maxR = -Infinity, maxC = -Infinity;
+    pattern.forEach(([r, c]) => {
+      if (r < minR) minR = r;
+      if (c < minC) minC = c;
+      if (r > maxR) maxR = r;
+      if (c > maxC) maxC = c;
+    });
+
+    const patternRows = maxR - minR + 1;
+    const patternCols = maxC - minC + 1;
+
+    // start so the whole pattern is centered on the board
+    const startRow = Math.floor((ROWS - patternRows) / 2) - minR;
+    const startCol = Math.floor((COLS - patternCols) / 2) - minC;
+
+    // place cells, checking bounds
+    pattern.forEach(([r, c]) => {
+      const rr = startRow + r;
+      const cc = startCol + c;
+      if (rr >= 0 && rr < ROWS && cc >= 0 && cc < COLS) {
+        grid[rr][cc] = 1;
+      }
+    });
+
+    generation = 0;
+    stable = false;
+    updateStats();
+    render(); // <-- use your existing render() function (drawGrid() doesn't exist)
+
+    // optional: reset the dropdown to the placeholder so it doesn't stay on a pattern
+    // e.target.value = "";
+  });
+} else {
+  console.warn('Presets select (#presets) not found in DOM. Add <select id="presets"> in your HTML.');
+}
+

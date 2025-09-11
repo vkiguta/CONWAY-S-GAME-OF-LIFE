@@ -120,6 +120,7 @@ text-shadow: 0 0 15px rgba(255,255,255,.5), 0 0 10px rgba(255,255,255,.5);
 
 .rules-header h2 {
   margin: 0;
+  padding-top: 30px;
   font-family: "Felipa", serif;
   text-align: center;
   font-size: 35px;
@@ -136,21 +137,7 @@ text-shadow: 0 0 15px rgba(0, 255, 64, 0.5), 0 0 10px rgba(255,255,255,.5);
   cursor: pointer;
 }
 
-/* FLOATING BUTTON (hidden by default) */
-.floating-btn {
-  display: none;
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background: #0ff;
-  color: #111;
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 255, 200, 0.6);
-}
+
 
 
 
@@ -218,6 +205,11 @@ input[type="range"] {
   gap: 12px;
   font-size: 13px;
   opacity: 0.9;
+}
+
+#presets {
+  padding: 6px;
+  border-radius: 6px;
 }
 
 canvas {
